@@ -1,3 +1,4 @@
+import Room from '@/components/Room';
 import {Call, CallingState, StreamCall, useStreamVideoClient } from '@stream-io/video-react-native-sdk'
 import { useLocalSearchParams } from 'expo-router'
 import { useEffect, useState } from 'react'
@@ -22,7 +23,7 @@ export default function CallScreen() { //This page responsible for calling
        
       }else{  
 
-        slug = "demo room"; 
+        slug = "demoroom"; 
     const _call = client?.call("default",'slug'); //under scor call because its geting passed into
        _call?.join({create:true}).then(()=> {             //seting ccit as the "demo room"
                                       //above is actually joining call now. If dosent exhist then it gets created
@@ -59,7 +60,7 @@ export default function CallScreen() { //This page responsible for calling
   return(     //Bellow passes the "call" object to the StreamCall component
     <StreamCall call={call}>  
       <Text>CallScreen</Text>
-     
+     <Room slug={slug}  />
     </StreamCall>
   )
 }
