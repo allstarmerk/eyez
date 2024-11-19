@@ -32,7 +32,7 @@ export default function CallScreen() { //This page responsible for calling
     }
     setSlug(slug);
   }, [id, client])
-
+ //Slug is the meeting code /combo of letters and numbers
 
 
 
@@ -59,8 +59,7 @@ export default function CallScreen() { //This page responsible for calling
     
   return(     //Bellow passes the "call" object to the StreamCall component
     <StreamCall call={call}>  
-      <Text>CallScreen</Text>
      <Room slug={slug}  />
     </StreamCall>
-  )
+  );
 }
