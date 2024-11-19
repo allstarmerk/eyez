@@ -3,6 +3,7 @@ import React from 'react'
 import { CallContent } from '@stream-io/video-react-native-sdk'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { useRouter } from 'expo-router'
+import { copySlug, formatSlug } from '@/lib/slugs'
 
 export default function CallRoom({slug}: {slug: string}) {
 const router = useRouter();
@@ -31,6 +32,7 @@ const router = useRouter();
 }
 
 const RoomId = ({slug}: {slug: string}) => {
+    return (
     <TouchableOpacity
        onPress={() => copySlug(slug)} //Need to create helper function to copy slug
        style = {{                       // function to If somone clicks on the meeting id at top left screen it will copy to clipboard
@@ -48,6 +50,6 @@ const RoomId = ({slug}: {slug: string}) => {
        call ID: {formatSlug(slug)}  
        </Text>
        </TouchableOpacity>
- );
-};
+  );
+ };
 

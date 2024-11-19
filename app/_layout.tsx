@@ -2,6 +2,8 @@ import 'react-native-reanimated';
 import { Slot } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
 import { ClerkProvider, ClerkLoaded } from '@clerk/clerk-expo'
+import { RootSiblingParent } from 'react-native-root-siblings';
+  
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
 
@@ -44,7 +46,9 @@ export default function RootLayout() {
   return (
     <ClerkProvider publishableKey={publishableKey} tokenCache ={tokenCache}>
       <ClerkLoaded>
+      <RootSiblingParent>
         <Slot />
+      </RootSiblingParent>
       </ClerkLoaded>
     </ClerkProvider>
   );
