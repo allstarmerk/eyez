@@ -26,12 +26,12 @@ export default function CallRoutesLayout() {
 
 const user: User = {
     id: clerkUser.id,
-    name: clerkUser.fullName || ''
+    name: clerkUser.fullName!,
   };
 
-    const tokenProvider = async () => {
+    const tokenProvider = async () => { //whenever on layout page token will be assigned to
     const response = await fetch(
-      `${process.env.Expo_PUBLIC_API_URL}/generateUserToken`,
+      `${process.env.EXPO_PUBLIC_API_URL}/generateUserToken`,
       {
         method: 'POST',
         headers: {
@@ -42,7 +42,7 @@ const user: User = {
           name: clerkUser.fullName!,  //passes user information up to the end point we created in .env file process.env.Expo_PUBLIC_API_URL
           image: clerkUser.imageUrl!,
           email: clerkUser.primaryEmailAddress?.toString()!,
-        }),
+        }),    //fetch call to pass user information to the end point we created in .env file process.env.Expo_PUBLIC_API_URL
       }
     );
     const data = await response.json();
