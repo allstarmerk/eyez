@@ -15,7 +15,12 @@
     "ios": {
       "supportsTablet": true,
       "bitcode": false,
-      "bundleIdentifier": "com.allstarmerk.eyez"
+      "bundleIdentifier": "com.allstarmerk.eyez",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app requires camera access in order to capture and transmit video & johnathan is hacking you",
+        "NSMicrophoneUsageDescription": "This app requires  access so i can steal your crypto"
+    
+      }
     },
     "android": {
       "adaptiveIcon": {

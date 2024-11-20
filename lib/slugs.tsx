@@ -17,7 +17,7 @@ export const formatSlug = (slug: string| null) => {
         .map((word) => word.charAt(0).toLowerCase() + word.slice(1).toLowerCase()) 
         .join("-");
     };
-    
+
 
 export const copySlug = async (slug: string | null) => {  //helper functio to copy the meeting room name
     if (!slug) return;
@@ -26,7 +26,7 @@ export const copySlug = async (slug: string | null) => {  //helper functio to co
         //Format slug makes it so slug: "happy-blue-dog" becomes slug: "happy blue dog"
 
         Toast.show("Copied to clipboard", {
-            duration: Toast.durations.SHORT,
+            duration: Toast.durations.LONG,
             position: Toast.positions.BOTTOM,
             shadow: true,
         });

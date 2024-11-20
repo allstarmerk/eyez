@@ -4,6 +4,8 @@ import { useLocalSearchParams } from 'expo-router'
 import { useEffect, useState } from 'react'
 import { View, Text, ActivityIndicator } from 'react-native'
 import { generateSlug } from "random-word-slugs";
+import Toast from 'react-native-root-toast';
+import { copySlug } from '@/lib/slugs';
 
 export default function CallScreen() { //This page responsible for calling
   const { id } = useLocalSearchParams(); 
@@ -38,9 +40,25 @@ export default function CallScreen() { //This page responsible for calling
     const _call = client?.call("default",'slug'); //under scor call because its geting passed into
        _call?.join({create:true}).then(()=> {             //seting ccit as the "demo room"
                                       //above is actually joining call now. If dosent exhist then it gets created
+       Toast.show(
+        "The call was created Sucessfully \n TAp Here to COPY the meeting ID to  Share",
+       {
+       duration: Toast.durations.LONG,
+        position: Toast.positions.CENTER,
+        shadow: true,
+        onPress: async ( )  => {
+          copySlug(slug);
+        },
+      }
+       );
+
+       
+       
        setCall(_call);
        })
     }
+
+
     setSlug(slug);
   }, [id, client])
  //Slug is the meeting code /combo of letters and numbers
