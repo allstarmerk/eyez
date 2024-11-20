@@ -41,7 +41,7 @@ export default function CallScreen() { //This page responsible for calling
        _call?.join({create:true}).then(()=> {             //seting ccit as the "demo room"
                                       //above is actually joining call now. If dosent exhist then it gets created
        Toast.show(
-        "The call was created Sucessfully \n TAp Here to COPY the meeting ID to  Share",
+        "The call was created Sucessfully \n Tap Here to COPY the meeting ID to  Share",
        {
        duration: Toast.durations.LONG,
         position: Toast.positions.CENTER,
@@ -61,11 +61,11 @@ export default function CallScreen() { //This page responsible for calling
 
     setSlug(slug);
   }, [id, client])
- //Slug is the meeting code /combo of letters and numbers
 
 
 
-                     //if user leaves page call will be left by using useEffect
+
+                     
  useEffect(() => {
   //clean up function runs whe componet unmounts
   if(call?.state.callingState !== CallingState.LEFT) {

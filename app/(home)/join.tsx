@@ -1,9 +1,10 @@
 import { inverseFormatSlug} from '@/lib/slugs'
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
-import { TextInput } from 'react-native-gesture-handler'
+import { TextInput } from 'react-native'
 import { useStreamVideoClient } from '@stream-io/video-react-native-sdk';
 import { useRouter } from 'expo-router';
+import Toast from 'react-native-root-toast';
 
 
 export default function JoinPage() {
@@ -13,18 +14,30 @@ export default function JoinPage() {
 
   const handleJoinRoom = async () => {
     if (!roomId) return;
-    {
+    
      const slug = inverseFormatSlug(roomId);
 
      const call = client?.call("default", slug);
-
+  
 
      call?.get().then((callResponse) => {
       console.log( callResponse);
       router.push(`/(home)/${slug}`);
 
+     }).catch((reason) => {
+      console.log(reason.message);
+
+      Toast.show(
+        "Error: Looks Like The Room Dosent Exist",
+        {
+          duration: Toast.durations.LONG,
+          position: Toast.positions.CENTER,
+          shadow: true,
+        }
+      )
+
     });
-  }
+  };
 
 
 
@@ -40,7 +53,7 @@ export default function JoinPage() {
 
         }}
         >  
-        Enter The Room Name
+        Enter The Room Name To Join:
         </Text>
         <TextInput
         placeholder= "e.g Black Purple Tiger"
@@ -48,26 +61,27 @@ export default function JoinPage() {
         onChangeText={setRoomId}
         style={{
           padding: 20,
-          fontSize: 20,
+          width: "100%",
+          backgroundColor: "white",
         }}
         />
  <TouchableOpacity
     onPress ={handleJoinRoom}
     style={{
-      backgroundColor: "black",
       padding: 20,
-      borderRadius: 5,
+      backgroundColor: "blue",
       width: "100%",
+      alignItems: "center",
       justifyContent: "center",
     }}
     >
+      <Text>
       
         Join Room
-
+       </Text>
     </TouchableOpacity>
-
-
     </View>
+
+
   )
-}
 }
