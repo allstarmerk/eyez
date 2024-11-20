@@ -14,7 +14,7 @@ export default function JoinPage() {
 
   const handleJoinRoom = async () => {
     if (!roomId) return;
-    {
+    
      const slug = inverseFormatSlug(roomId);
 
      const call = client?.call("default", slug);
@@ -37,7 +37,7 @@ export default function JoinPage() {
       )
 
     });
-  }
+  };
 
 
 
@@ -71,12 +71,12 @@ export default function JoinPage() {
       padding: 20,
       backgroundColor: "blue",
       width: "100%",
-      alignItems: "center",
       justifyContent: "center",
     }}
     >
+      <Text>
       
-       <Text>
+       
         Join Room
        
        </Text>
@@ -86,4 +86,4 @@ export default function JoinPage() {
 
   )
 }
-}
+
