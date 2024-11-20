@@ -10,10 +10,18 @@ export const formatSlug = (slug: string| null) => {
     .join(" "); //Join the words with spaces
     };
 
+    export const inverseFormatSlug = (title: string| null) => {
+        if(!title) return "";
+        return title
+        .split(" ")
+        .map((word) => word.charAt(0).toLowerCase() + word.slice(1).toLowerCase()) 
+        .join("-");
+    };
+    
 
 export const copySlug = async (slug: string | null) => {  //helper functio to copy the meeting room name
     if (!slug) return;
-    
+
         await Clipboard.setStringAsync(formatSlug(slug)); 
         //Format slug makes it so slug: "happy-blue-dog" becomes slug: "happy blue dog"
 

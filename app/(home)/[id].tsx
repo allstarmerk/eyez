@@ -3,6 +3,8 @@ import {Call, CallingState, StreamCall, useStreamVideoClient } from '@stream-io/
 import { useLocalSearchParams } from 'expo-router'
 import { useEffect, useState } from 'react'
 import { View, Text, ActivityIndicator } from 'react-native'
+import { generateSlug } from "random-word-slugs";
+
 export default function CallScreen() { //This page responsible for calling
   const { id } = useLocalSearchParams(); 
   const [call, setCall]= useState<Call | null>(null) //keeps track of the state of call
@@ -23,7 +25,16 @@ export default function CallScreen() { //This page responsible for calling
        
       }else{  
 
-        slug = "demoroom"; 
+        slug = generateSlug(3, {  //creates random word phrase to make meeting code
+            categories:{ 
+              adjective: ["color", "personality"],
+              noun: ["animals", "food"],
+            },
+          });
+      
+
+
+
     const _call = client?.call("default",'slug'); //under scor call because its geting passed into
        _call?.join({create:true}).then(()=> {             //seting ccit as the "demo room"
                                       //above is actually joining call now. If dosent exhist then it gets created
