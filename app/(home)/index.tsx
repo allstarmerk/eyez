@@ -6,7 +6,7 @@ import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react'
 import { Text, TouchableOpacity, View, Image } from 'react-native'
 import Dialog from "react-native-dialog";
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function IndexScreen() {
   const client = useStreamVideoClient(); 
@@ -54,6 +54,7 @@ const handleJoinRoom = async (id: string) => {
 };
 
   return (
+    <GestureHandlerRootView style = {{ flex: 1 }}>
     <View>
      <TouchableOpacity
      style={{
@@ -198,7 +199,7 @@ const handleJoinRoom = async (id: string) => {
                 >
                   <Entypo
                   name="users"
-                  size={15}
+                  size={14}
                   color="blue"
                   style = {{
                     marginRight: 5,
@@ -226,5 +227,6 @@ const handleJoinRoom = async (id: string) => {
         )}
       />
       </View>
+    </GestureHandlerRootView>
   );
 }
