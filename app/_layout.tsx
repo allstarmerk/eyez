@@ -3,6 +3,7 @@ import { Slot } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
 import { ClerkProvider, ClerkLoaded } from '@clerk/clerk-expo'
 import { RootSiblingParent } from 'react-native-root-siblings';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
   
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
@@ -47,7 +48,9 @@ export default function RootLayout() {
     <ClerkProvider publishableKey={publishableKey} tokenCache ={tokenCache}>
       <ClerkLoaded>
       <RootSiblingParent>
+        <GestureHandlerRootView style={{ flex: 1 }}>
         <Slot />
+        </GestureHandlerRootView>
       </RootSiblingParent>
       </ClerkLoaded>
     </ClerkProvider>

@@ -6,7 +6,7 @@ import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react'
 import { Text, TouchableOpacity, View, Image } from 'react-native'
 import Dialog from "react-native-dialog";
-import { FlatList, GestureHandlerRootView } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native';
 
 export default function IndexScreen() {
   const client = useStreamVideoClient(); 
@@ -56,7 +56,6 @@ const handleJoinRoom = async (id: string) => {
 };
 
   return (
-    <GestureHandlerRootView style = {{ flex: 1 }}>
     <View>
      <TouchableOpacity
      style={{
@@ -86,6 +85,20 @@ const handleJoinRoom = async (id: string) => {
          />
 
       </Dialog.Container>
+          <View>
+            <Text 
+          
+          style={{
+            color: isMyCalls ? "black" : "gray",
+
+          }}
+          onPress={() => setIsMyCalls(false)}
+          >
+            All Calls
+          </Text>
+          </View>
+
+
       <FlatList
         data = {calls}
         keyExtractor={(item) => item.id}
@@ -233,6 +246,5 @@ const handleJoinRoom = async (id: string) => {
         )}
       />
       </View>
-    </GestureHandlerRootView>
   );
 }

@@ -50,13 +50,14 @@ export default function JoinPage() {
         style = {{
           padding: 20,
           fontWeight: "bold",
+          
 
         }}
         >  
         Enter The Room Name To Join:
         </Text>
         <TextInput
-        placeholder= "e.g Blue Big Zebra"
+        placeholder= "example: Blue Big Zebra"
         value={roomId}
         onChangeText={setRoomId}
         style={{
