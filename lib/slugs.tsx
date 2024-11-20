@@ -27,7 +27,7 @@ export const copySlug = async (slug: string | null) => {  //helper functio to co
 
         Toast.show("Copied to clipboard", {
             duration: Toast.durations.LONG,
-            position: Toast.positions.BOTTOM,
+            position: Toast.positions.CENTER,
             shadow: true,
         });
     };

@@ -17,7 +17,7 @@ export default function CallScreen() { //This page responsible for calling
        // either join another room id
        //or leave a room foranother room id
       let slug: string;
-      if (id!=='(call)'&& id ){  //&& id making sure id exhists
+      if (id!=="(call)"&& id ){  //&& id making sure id exhists
                                   //Then join a exhist
       slug = id.toString(); 
        const _call = client?.call("default",slug);
@@ -37,9 +37,9 @@ export default function CallScreen() { //This page responsible for calling
 
 
 
-    const _call = client?.call("default",'slug'); //under scor call because its geting passed into
-       _call?.join({create:true}).then(()=> {             //seting ccit as the "demo room"
-                                      //above is actually joining call now. If dosent exhist then it gets created
+    const _call = client?.call("default",slug); //under scor call because its geting passed into
+       _call?.join({create: true}).then(()=> {             //seting ccit as the "demo room"
+     //duble check here                                  //above is actually joining call now. If dosent exhist then it gets created
        Toast.show(
         "The call was created Sucessfully \n Tap Here to COPY the meeting ID to  Share",
        {
@@ -78,8 +78,7 @@ export default function CallScreen() { //This page responsible for calling
 
  if (!call||!slug ) {
   return (                        //if no call or slug then there will be loading indicator
-    <View style = {{flex:1, justifyContent: "center", alignItems:
-      "center"}} >                               
+    <View style = {{flex:1, justifyContent: "center", alignItems: "center"}} >                               
         <ActivityIndicator size="large"  />
         </View>
   );

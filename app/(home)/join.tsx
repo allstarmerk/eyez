@@ -14,7 +14,7 @@ export default function JoinPage() {
 
   const handleJoinRoom = async () => {
     if (!roomId) return;
-    
+    {
      const slug = inverseFormatSlug(roomId);
 
      const call = client?.call("default", slug);
@@ -37,7 +37,7 @@ export default function JoinPage() {
       )
 
     });
-  };
+  }
 
 
 
@@ -56,7 +56,7 @@ export default function JoinPage() {
         Enter The Room Name To Join:
         </Text>
         <TextInput
-        placeholder= "e.g Black Purple Tiger"
+        placeholder= "e.g Blue Big Zebra"
         value={roomId}
         onChangeText={setRoomId}
         style={{
@@ -75,13 +75,15 @@ export default function JoinPage() {
       justifyContent: "center",
     }}
     >
-      <Text>
       
+       <Text>
         Join Room
+       
        </Text>
     </TouchableOpacity>
     </View>
 
 
   )
+}
 }
