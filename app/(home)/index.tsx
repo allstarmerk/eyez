@@ -1,9 +1,10 @@
+import { formatSlug } from '@/lib/slugs';
 import { SignedIn, useAuth, useUser } from '@clerk/clerk-expo'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { Entypo, Feather, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Call, useStreamVideoClient } from '@stream-io/video-react-native-sdk';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View, Image } from 'react-native'
 import Dialog from "react-native-dialog";
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -99,15 +100,126 @@ const handleJoinRoom = async (id: string) => {
               padding: 20,
               backgroundColor: 
               item.state.participantCount === 0 ? "gray" : "white",
+              opacity: item.state.participantCount === 0 ? 0.5 : 1,
+              borderBottomWidth: 1,
+              borderBottomColor: 
+              item.state.participantCount === 0 ? "gray" : "black",
               flexDirection: "row",
               alignItems: "center",
               gap:10,
             }}
              >
-            <Text>{item.id}</Text>
+            {item.state.participantCount === 0 ? (  (
+              <Feather name="phone-off" size={24} color="black" />
+            )) : (
+              <Feather name="phone-call" size={24} color="black" />
+            )}
+            <Image
+            source = {{  uri: item.state.createdBy?.image} }
+            style = {{
+              width: 50,
+              height: 50,
+              borderRadius: 25,
+            }}  
+            />
+            <View style = {{ 
+              flex: 1,
+              justifyContent: "space-between"
+               }}
+               
+               >
+            
+            <View
+            style = {{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+            >
+              
+              <View>
+              <Text
 
+              style = {{
+                fontWeight: "bold",
+                fontSize: 16,
+              }}
+              >
+                {item.state.createdBy?.name ||
+                item.state.createdBy?.custom.email.split("@")[0]}
+                </Text>
+                <Text
+                style = {{
+                  fontSize:12,
+                }}
+                >
+                  {item.state.createdBy?.custom.email} 
+                  </Text>
+                  </View>
 
+        <View>
+          <Text
+            style = {{
+            fontSize: 12,
+            textAlign: "right",
+            width: 100,
+           }}
+          >
+            {formatSlug(item.id)}
+            </Text>
 
+            <View
+            style = {{
+              flexDirection: "row",
+              alignItems: "center",
+              
+            }}
+            >
+              {item.state.participantCount ===  0 ? (
+                <Text
+                style = {{
+                  fontSize: 12,
+                  fontWeight: "bold",
+                  color: "blue",
+                }}
+                >
+                  Call Has Ended
+
+                </Text>
+              ) : (
+                <View
+                style = {{
+                  borderRadius: 5,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  backgroundColor: "#f1f1f1",
+                  padding: 10,
+                }}
+                >
+                  <Entypo
+                  name="users"
+                  size={15}
+                  color="blue"
+                  style = {{
+                    marginRight: 5,
+                  }}
+                  />
+                  <Text
+                  style = {{
+                    color: "blue",
+                    fontWeight: "bold",
+                  }}
+                  >
+                    {item.state.participantCount}
+                  </Text>
+                </View>
+              )}
+            </View>
+
+            </View>
+
+          </View>
+          </View>
           </TouchableOpacity> 
 
 
