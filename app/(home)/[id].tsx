@@ -17,6 +17,7 @@ export default function CallScreen() { //This page responsible for calling
        // either join another room id
        //or leave a room foranother room id
       let slug: string;
+      
       if (id!=="(call)"&& id ){  //&& id making sure id exhists
                                   //Then join a exhist
       slug = id.toString(); 

@@ -29,6 +29,8 @@ export default function IndexScreen() {
         ],
   } 
   : {},
+
+
   sort: [{field: "created_at", direction: -1}],
 
   watch: true,
@@ -90,7 +92,7 @@ const handleJoinRoom = async (id: string) => {
         refreshing={isRefreshing}
         onRefresh = {handleRefresh}
         contentContainerStyle = {{
-          padding: 100,
+          paddingBottom: 100,
         }}
         renderItem = {({item}) => (
           <TouchableOpacity
@@ -110,9 +112,9 @@ const handleJoinRoom = async (id: string) => {
               gap:10,
             }}
              >
-            {item.state.participantCount === 0 ? (  (
+            {item.state.participantCount === 0 ? (  
               <Feather name="phone-off" size={24} color="black" />
-            )) : (
+            ) : (
               <Feather name="phone-call" size={24} color="black" />
             )}
             <Image
@@ -123,6 +125,7 @@ const handleJoinRoom = async (id: string) => {
               borderRadius: 25,
             }}  
             />
+
             <View style = {{ 
               flex: 1,
               justifyContent: "space-between"
@@ -158,16 +161,19 @@ const handleJoinRoom = async (id: string) => {
                   </Text>
                   </View>
 
+
+
         <View>
           <Text
             style = {{
-            fontSize: 12,
+            fontSize: 11,
             textAlign: "right",
             width: 100,
            }}
           >
             {formatSlug(item.id)}
-            </Text>
+           </Text>
+            
 
             <View
             style = {{
@@ -181,7 +187,7 @@ const handleJoinRoom = async (id: string) => {
                 style = {{
                   fontSize: 12,
                   fontWeight: "bold",
-                  color: "blue",
+                  color: "red",
                 }}
                 >
                   Call Has Ended
@@ -216,7 +222,7 @@ const handleJoinRoom = async (id: string) => {
                 </View>
               )}
             </View>
-
+              
             </View>
 
           </View>
